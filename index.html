@@ -390,9 +390,28 @@
         });
     }
 
+    // *** new code
+    // Google API call to fetch terrain image from coordinates
+    function getGoogleAPITerrainImage(locations, callback) {
+        var lat = locations[0].lat;
+        var lng = locations[0].lng;
+        var format = 'jpg';
+        var zoom = 15;
+        var size = '512x512';
+        var maptype = 'terrain';
+        var url = `http://localhost:3000/google-terrain-image?lat=${lat}&lng=${lng}&zoom=${zoom}&size=${size}&maptype=${maptype}&key=${GOOGLE_API_KEY}`;
+
+        options.terrainImage = url;
+        console.log('New terrainImage options: ', options.terrainImage);
+
+        callback(url);
+    }
+
+    // *** end new code
     var $imageCanvasElem, imageCanvasElemContext;
     var terrainImageData, terrainImageProcessedData;
     function filterTerrainImageAndGenerateHeight() {
+        console.log("In filterTerrainImageAndGenerateHeight()");
         //draw image onto canvas
         //NO NEED TO DO THIS WHEN USING stackBlurImage()
         //imageCanvasElemContext.drawImage($scaledImageObj, 0, 0, terrainImageWidth, terrainImageHeight);
@@ -408,7 +427,8 @@
     }
 
     var $scaledImageObj, $origImageObj;
-    function prepareTerrainImageElements() {
+    function prepareTerrainImageElements(url) {
+        console.log('In prepareTerrainImageElements()');
 
         //create canvas that is same size as terrain res so that one vertex maps to one resized pixel
         $imageCanvasElem = $(document.createElement('canvas'));
@@ -426,7 +446,6 @@
         $scaledImageObj[0].id = 'scaledTerrainImage';
         $scaledImageObj[0].onload = function () {
             //this function is triggered from $origImageObj setting this src
-
             //start filtering and changing heights
             filterTerrainImageAndGenerateHeight();
         };
@@ -435,10 +454,11 @@
 
         //load original terrain image, scale it using canvas, then set scaled image to $scaledImageObj
         $origImageObj = $(new Image());
+        $origImageObj[0].setAttribute('crossOrigin', 'anonymous');
         $origImageObj[0].onload = function () {
             //copy to scaled canvas to scale this image
             imageCanvasElemContext.drawImage($origImageObj[0], 0, 0, TERRAIN_RES, TERRAIN_RES);
-
+            console.log("Drew origImageObj to canvas");
             //get scaled data from canvas and set data for scaledImageObj
             $scaledImageObj[0].src = $imageCanvasElem[0].toDataURL();
         };
