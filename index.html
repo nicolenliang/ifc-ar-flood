@@ -457,6 +457,7 @@
             //get scaled data from canvas and set data for scaledImageObj
             $scaledImageObj[0].src = $imageCanvasElem[0].toDataURL();
         };
+        loadTerrainImage(url);
     }
 
     function loadTerrainImage(image) {
@@ -1608,7 +1609,7 @@
         getGoogleAPITerrainImage(coords, function(url) {
             prepareTerrainImageElements(url);
         });
-        loadTerrainImage(options.terrainImage);
+        //loadTerrainImage(options.terrainImage);
 
         //setup water
         setupWater();
