@@ -24,6 +24,17 @@
             color: #ccffcc;
             font-weight: bold;
         }
+        #water-toggle-container {
+            position: fixed;
+            top: 10px;
+            left: 40%;
+            background: rgba(128, 128, 128, 0.4);
+            padding: 5px;
+            font-family: Helvetica, serif;
+            font-style: italic;
+            font-size: 12px;
+            color: white;
+        }
     </style>
 
     <!--load helper libraries-->
@@ -1711,6 +1722,10 @@
         <div class="caption">&lt;canvas&gt;</div>
     </div>
     <div id="threejs-container"></div>
+    <div id="water-toggle-container">
+        <label for="water-toggle">View Modified Property</label>
+        <input type="checkbox" id="water-toggle"/>
+    </div>
     <div id="info-container">
         <div>
             <p class="info-header">- MOUSE &amp; KEYBOARD -</p>
