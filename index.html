@@ -56,10 +56,6 @@
 
     <!--load water libraries-->
     <script type="text/javascript" src="js/skunami.min.js"></script>
-
-    <!--load Google Maps JavaScript API
-        TODO: store key safely-->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaaXloMwD-My_G_mmVJGIeH347SvbZtho&libraries=places"></script>
     
     <script>
 
@@ -399,7 +395,7 @@
         var zoom = 15;
         var size = '512x512';
         var maptype = 'terrain';
-        var url = `http://localhost:3000/google-terrain-image?lat=${lat}&lng=${lng}&zoom=${zoom}&size=${size}&maptype=${maptype}&key=${GOOGLE_API_KEY}`;
+        var url = `http://localhost:3000/google-terrain-image?lat=${lat}&lng=${lng}&zoom=${zoom}&size=${size}&maptype=${maptype}`;
 
         options.terrainImage = url;
         console.log('New terrainImage options: ', options.terrainImage);

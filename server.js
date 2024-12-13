@@ -4,6 +4,8 @@ const cors = require('cors');
 const app = express();
 const port = 3000;
 
+require('dotenv').config();
+
 // Enable CORS for Google API
 app.use(cors());
 app.use(function(req, res, next) {
@@ -14,7 +16,8 @@ app.use(function(req, res, next) {
 });
 
 app.get('/google-terrain-image', async (req, res) => {
-    const { lat, lng, zoom, size, maptype, key } = req.query;
+    const { lat, lng, zoom, size, maptype } = req.query;
+    const key = process.env.GOOGLE_API_KEY;
     const url = `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=${zoom}&size=${size}&maptype=${maptype}&key=${key}`;
 
     axios.get(url, {
