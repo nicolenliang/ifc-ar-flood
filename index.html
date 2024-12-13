@@ -1196,11 +1196,11 @@
             control.onChange(changeTrackingThreshold);
         }
 
-        //Longitude Latitude folder
-        longlatFolder = gui.addFolder('Coordinates');
-        longlatFolder.open();
+        //Coordinates folder
+        coordsFolder = gui.addFolder('Coordinates');
+        coordsFolder.open();
 
-        control = longlatFolder.add(options, 'latLng').name('Format: [lat,lng]').listen();
+        control = coordsFolder.add(options, 'latLng').name('Format: [lat,lng]').listen();
         changeLatLng = function (value) {
             var coords = value.split(',');
             coords = coords.map(coord => coord.trim());
