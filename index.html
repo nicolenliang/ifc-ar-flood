@@ -1610,7 +1610,12 @@
         setupSkulpt();
 
         //setup terrain image
-        prepareTerrainImageElements();
+        //prepareTerrainImageElements();
+        getGoogleAPITerrainImage(
+            [{ lat: options.latitudeCoord,lng: options.longitudeCoord }],
+            function(url) {
+            prepareTerrainImageElements(url);
+        });
         loadTerrainImage(options.terrainImage);
 
         //setup water
