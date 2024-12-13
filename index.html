@@ -1413,6 +1413,11 @@
 
         //NOTE: not allowing changing of any options under the Tracking GUI folder using AR markers, because it just does not make sense
 
+        //coordinates
+        coords_changed = function (params) {
+            changeLatLng(params.value);
+        };
+
         //terrain
         terrainImageComboBox_changed = function (params) {
             changeTerrainImage(terrainImages[Object.keys(terrainImages)[params.selectedId]]);
