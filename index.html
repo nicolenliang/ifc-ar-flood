@@ -1726,6 +1726,14 @@
 
     <!--listener for checkbox toggle-->
     <script>
+    // ** TAKE-HOME 1.2 Pseudocode **
+    // use gpuSkulpt.getPixelFloatData() to store original and modified terrain heights
+    // update modifiedTerrainHeights every time sculpting is done
+    // when property-toggle is checked (display original):
+        // use modifyTerrainImage(originalTerrainHeights) to update the terrain image
+    // when property-toggle is unchecked (display modified):
+        // use modifyTerrainImage(modifiedTerrainHeights) to update the terrain image
+
     document.getElementById('property-toggle').addEventListener('change', function() {
         var isChecked = this.checked;
         var originalTerrain = document.getElementById('scaledTerrainImage');
