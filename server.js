@@ -1,10 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
 const app = express();
 const port = 3000;
-
-require('dotenv').config();
 
 // Enable CORS for Google API
 app.use(cors());
