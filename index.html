@@ -24,7 +24,7 @@
             color: #ccffcc;
             font-weight: bold;
         }
-        #water-toggle-container {
+        #property-toggle-container {
             position: fixed;
             top: 10px;
             left: 40%;
@@ -1723,6 +1723,23 @@
         loop();
     });
     </script>
+
+    <!--listener for checkbox toggle-->
+    <script>
+    document.getElementById('water-toggle').addEventListener('change', function() {
+        var isChecked = this.checked;
+        var originalTerrain = document.getElementById('scaledTerrainImage');
+        var modifiedTerrain = document.getElementById('modifiedTerrainImage');
+
+        if (isChecked) {
+            originalTerrain.style.display = 'block';
+            modifiedTerrain.style.display = 'none';
+        } else {
+            originalTerrain.style.display = 'none';
+            modifiedTerrain.style.display = 'block';
+        }
+    });
+    </script>
 </head>
 <body style="background-color: #081419;">
     <div class="invisible" id="video-container">
@@ -1733,9 +1750,9 @@
         <div class="caption">&lt;canvas&gt;</div>
     </div>
     <div id="threejs-container"></div>
-    <div id="water-toggle-container">
-        <label for="water-toggle">View Modified Property</label>
-        <input type="checkbox" id="water-toggle"/>
+    <div id="property-toggle-container">
+        <label for="property-toggle">View Original Property</label>
+        <input type="checkbox" id="property-toggle"/>
     </div>
     <div id="info-container">
         <div>
